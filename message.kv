@@ -1,0 +1,225 @@
+
+Manager:
+	Screen1:
+	Screen2:
+    Screen3:
+    Screen4:
+	Screen5:
+	
+<Screen1>:
+    
+    name:"scr1"
+    
+    canvas.before:
+    	Color:
+    		rgba: (1,1,0,1)
+    	Rectangle:
+    		pos: self.pos
+    		size: self.size
+    		
+    MDBoxLayout:
+        orientation:"vertical"	
+        spacing:100
+        MDLabel: 
+            text: "Welcome"
+            theme_text_color: "Custom"
+            text_color: 144/255,0,211/255,1
+            halign: "center"
+            font_style: "H2"
+            
+        MDTextField:
+            id:user
+            hint_text:"Username: "
+            helper_text:"*Required"
+            icon_right: "account"
+            
+        MDTextField:
+        	id:passw
+        	hint_text:"Password: "
+        	helper_text:"*Required"
+        	icon_right: "eye-off"
+        	password:True
+        	
+        	
+        Button:
+        	text:"----->"
+        	size_hint:(0.3,0.2)
+        	background_color:0,0,1,1
+        	pos_hint: {"center_x":0.5, "center_y":0.4}
+        	on_release:
+                app.login(user,passw,auth)
+        MDLabel:
+        	id:auth
+        	text:""
+        	color:"red"
+        	halign:"center"
+<Screen2>:
+	name:"scr2"
+	canvas.before:
+    	Color:
+    		rgba: (1,182/255,193/255,1)
+    	Rectangle:
+    		pos: self.pos
+    		size: self.size
+    		
+	BoxLayout:
+		orientation:"vertical"
+		    
+		MDLabel:
+		    text:"Successfully Logged IN"
+		    halign:"center"
+		    font_style: "H4"
+
+		Image:
+		    source:"bmi2.png"
+		    allow_stretch:True
+
+		BoxLayout:
+		    orientation:"horizontal"
+		    Button:
+		    	text:"Calculate BMI"
+		    	size_hint: (.3,.2)
+		    	on_release:app.root.current="scr3"
+		    Button:
+		    	text:"Analyze"
+		    	size_hint: (.3,.2)
+		    	on_release:app.root.current="scr4"
+		    Button:
+		    	text:"About"
+		    	size_hint: (.3,.2)
+		    	on_release:app.root.current="scr5"
+		    	
+<Screen3>:
+	name:"scr3"
+
+	canvas.before:
+    	Color:
+    		rgba: (1,182/255,193/255,1)
+    	Rectangle:
+    		pos: self.pos
+    		size: self.size
+
+	BoxLayout:
+        orientation:"vertical"
+        
+        MDLabel:
+        	text:"BMI Calculator!!!!"
+        	font_style:"H5"
+        	color:"red"
+        	halign:"center"
+        	
+        MDTextField:
+            id:height
+            hint_text:"Height:(in m) "
+            helper_text:"*Required"
+            input_filter:"float"
+            
+            
+        MDTextField:
+        	id:weight
+        	hint_text:"Weight:(in kg) "
+        	helper_text:"*Required"
+        	input_filter: "float"
+        	
+        MDLabel:
+        	id:result
+        	text:""
+        	color:"red"
+        	halign:"center"
+        	font_style:"H5"
+        	
+        Button:
+        	text:"Calculate"
+        	size_hint: (.3,.2)
+        	pos_hint:{"center_x":0.5}
+        	on_release:
+        	    app.calc(height, weight, result)
+
+        MDLabel:
+            text:""
+
+        Button:
+        	text:"<----"
+        	size_hint: (.3,.2)
+        	pos_hint:{"center_x":0.5}
+        	on_release:
+        	    app.root.current="scr2"
+        	
+        	
+        	 
+        MDLabel:
+        	text:" "
+        	
+        	
+<Screen4>:
+	name:"scr4"
+
+	canvas.before:
+    	Color:
+    		rgba: (1,182/255,193/255,1)
+    	Rectangle:
+    		pos: self.pos
+    		size: self.size
+
+	BoxLayout:
+        orientation:"vertical"
+        padding:100
+        spacing:100
+
+        Image:
+            source:"bmi.png"
+            allow_stretch:True
+            size_hint:(0.9,0.9)
+        
+        Button:
+            text:"<----"
+            size_hint: (.3,.2)
+        	pos_hint:{"center_x":0.5}
+        	on_release:
+        	    app.root.current="scr2"
+
+        	    	
+<Screen5>:
+	name:"scr5"
+	
+	canvas.before:
+    	Color:
+    		rgba: (1,182/255,193/255,1)
+    	Rectangle:
+    		pos: self.pos
+    		size: self.size
+	
+	BoxLayout:
+		orientation:"vertical"
+		padding:100
+		spacing:100
+		MDLabel:
+			text:"ABOUT"
+			font_style: "H2"
+			color:"black"
+			halign: "center"
+			underline:True
+			
+		MDLabel:
+			text:"This app is made using Python and Kivy library"
+			color:"black"
+			font_style:"H5"
+			
+		MDLabel:
+			text:"Name:    Aditya Kumar"
+            color: "black"
+            font_style:"Subtitle1"
+            
+		MDLabel:
+			text:"Contact:    aditya00778@gmail.com"
+            color: "black"
+            font_style:"Subtitle1"
+            
+        Button:
+            text:"<----"
+            size_hint:(0.3,0.2)
+        	background_color:0,0,1,1
+        	pos_hint: {"center_x":0.5, "center_y":0.4}
+        	on_release: app.root.current="scr2"
+            
+        
